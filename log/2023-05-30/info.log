@@ -1,0 +1,31 @@
+[TEST/server]2023/05/30 - 16:38:33.865	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 16:38:33.893	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 16:50:09.085	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 16:50:09.107	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:02:15.505	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:02:15.535	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:09:29.251	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:09:29.268	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:16:53.195	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:16:53.220	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:21:06.857	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:21:06.888	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:22:00.365	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:22:00.389	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:24:32.424	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:24:32.447	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:30:32.579	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:30:32.606	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:31:30.489	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:31:30.503	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:33:13.618	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:33:13.642	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:38:03.085	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:38:03.106	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:44:16.385	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:45:24.278	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:45:24.300	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 20:50:31.961	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 20:50:31.986	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}
+[TEST/server]2023/05/30 - 21:05:39.385	[34minfo[0m	D:/golang/server/initialize/gorm.go:40	register table success
+[TEST/server]2023/05/30 - 21:05:39.407	[34minfo[0m	D:/golang/server/core/server.go:27	server run success on 	{"address": ":8888"}

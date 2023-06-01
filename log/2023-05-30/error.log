@@ -1,0 +1,57 @@
+[TEST/server]2023/05/30 - 16:41:12.152	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "Authorities: unsupported relations for schema SysUser; Authority: unsupported relations for schema SysUser"}
+[TEST/server]2023/05/30 - 16:44:12.819	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "Authorities: unsupported relations for schema SysUser; Authority: unsupported relations for schema SysUser"}
+[TEST/server]2023/05/30 - 16:45:17.185	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "Authorities: unsupported relations for schema SysUser; Authority: unsupported relations for schema SysUser"}
+[TEST/server]2023/05/30 - 16:45:36.458	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "Authorities: unsupported relations for schema SysUser; Authority: unsupported relations for schema SysUser"}
+[TEST/server]2023/05/30 - 16:47:01.273	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "Authorities: unsupported relations for schema SysUser; Authority: unsupported relations for schema SysUser"}
+[TEST/server]2023/05/30 - 20:05:43.322	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:06:07.654	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:06:49.332	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:08:02.414	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:09:47.454	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:10:29.245	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:10:44.415	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:10:53.631	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:13:18.620	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:13:19.520	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:13:24.073	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:14:01.838	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:14:31.812	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:15:57.356	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:17:02.691	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:17:16.308	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:17:20.823	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:20:07.571	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:20:08.585	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:20:09.320	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:21:19.824	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:22:29.203	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:23:08.109	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:23:20.129	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:24:42.224	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:24:49.407	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:29	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:30:46.951	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:31:36.893	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:33:22.443	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:33:39.232	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:34:14.859	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:34:58.487	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:35:25.848	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:35:27.205	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:38:10.808	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:40:17.946	[31merror[0m	D:/golang/server/api/v1/system/sys_initdb.go:24	已存在数据库配置!
+[TEST/server]2023/05/30 - 20:40:38.199	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:40:42.004	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:44:27.580	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "db not init"}
+[TEST/server]2023/05/30 - 20:45:36.034	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:45:51.709	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:45:54.230	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:46:18.225	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:48:39.161	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:49:31.972	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:49:40.914	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:49:42.572	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:49:43.292	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "record not found"}
+[TEST/server]2023/05/30 - 20:49:57.237	[31merror[0m	D:/golang/server/api/v1/system/sys_user.go:31	登陆失败! 用户名不存在或者密码错误!	{"error": "Authorities: unsupported relations for schema SysUser; Authority: unsupported relations for schema SysUser"}
+[TEST/server]2023/05/30 - 21:06:03.863	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/30 - 21:10:41.436	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/30 - 21:13:01.410	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}

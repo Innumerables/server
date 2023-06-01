@@ -1,0 +1,28 @@
+[TEST/server]2023/05/31 - 14:19:49.541	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": ":POSTcasbin同步清理失败"}
+[TEST/server]2023/05/31 - 14:20:39.213	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:20:54.399	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:21:25.788	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:22:39.605	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:24:25.088	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:24:36.307	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:24:39.505	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:24:50.007	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:24:54.477	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:38	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:49:01.850	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:56	获取失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:49:40.134	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:56	获取失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:49:48.930	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:56	获取失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:49:55.773	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:56	获取失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 14:50:27.704	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:56	获取失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 16:24:18.192	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:77	修改失败	{"error": "Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'created_at' at row 1"}
+[TEST/server]2023/05/31 - 16:25:57.723	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:77	修改失败	{"error": "Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'created_at' at row 1"}
+[TEST/server]2023/05/31 - 16:28:27.653	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:77	修改失败	{"error": "Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'created_at' at row 1"}
+[TEST/server]2023/05/31 - 16:28:55.787	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:77	修改失败	{"error": "Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'created_at' at row 1"}
+[TEST/server]2023/05/31 - 16:52:22.157	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:120	获取失败!	{"error": "非法的排序字段: true"}
+[TEST/server]2023/05/31 - 20:12:59.973	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:43	删除失败	{"error": "/testtttttt:Getcasbin同步清理失败"}
+[TEST/server]2023/05/31 - 20:21:56.581	[31merror[0m	D:/golang/server/api/v1/system/sys_casbin.go:23	更新失败!	{"error": "存在相同api,添加失败,请联系管理员"}
+[TEST/server]2023/05/31 - 20:24:51.140	[31merror[0m	D:/golang/server/api/v1/system/sys_casbin.go:23	更新失败!	{"error": "存在相同api,添加失败,请联系管理员"}
+[TEST/server]2023/05/31 - 20:26:22.159	[31merror[0m	D:/golang/server/api/v1/system/sys_casbin.go:23	更新失败!	{"error": "存在相同api,添加失败,请联系管理员"}
+[TEST/server]2023/05/31 - 20:42:43.798	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:43	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 20:57:51.720	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:43	删除失败	{"error": "/jjjjjjjj:Getcasbin同步清理失败"}
+[TEST/server]2023/05/31 - 21:01:09.039	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:43	删除失败	{"error": "record not found"}
+[TEST/server]2023/05/31 - 21:03:35.456	[31merror[0m	D:/golang/server/api/v1/system/sys_api.go:27	创建失败！	{"error": "Error 1062 (23000): Duplicate entry '111' for key 'PRIMARY'"}
