@@ -7,6 +7,7 @@ require (
 	github.com/casbin/gorm-adapter/v3 v3.17.0
 	github.com/fsnotify/fsnotify v1.6.0
 	github.com/gin-gonic/gin v1.9.0
+	github.com/gofrs/uuid v4.0.0+incompatible
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/gookit/color v1.5.3
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
