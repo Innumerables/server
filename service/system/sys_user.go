@@ -4,7 +4,9 @@ import (
 	"errors"
 	"fmt"
 	"server/global"
+	"server/model/common/request"
 	"server/model/system"
+	"time"
 
 	"server/utils"
 
@@ -65,4 +67,87 @@ func (userService *UserService) SetUserAuthotity(id uint, authorithId uint) (err
 	}
 	err = global.GVA_DB.Where("id = ?", id).First(&system.SysUser{}).Update("authority_id", authorithId).Error
 	return err
+}
+
+func (userService *UserService) DeleteUser(id int) (err error) {
+	var user system.SysUser
+	err = global.GVA_DB.Where("id = ?", id).Delete(&user).Error
+	if err != nil {
+		return
+	}
+	err = global.GVA_DB.Delete(&[]system.SysUserAuthority{}, "sys_user_id = ?", id).Error
+	return err
+}
+
+func (userService *UserService) SetUserInfo(req system.SysUser) error {
+	return global.GVA_DB.Model(&system.SysUser{}).
+		Select("updated_at", "nick_name", "header_img", "phone", "email", "sideMode", "enable").
+		Where("id=?", req.ID).
+		Updates(map[string]interface{}{
+			"updated_at": time.Now(),
+			"nick_name":  req.NickName,
+			"header_img": req.HeaderImg,
+			"phone":      req.Phone,
+			"email":      req.Email,
+			"side_mode":  req.SideMode,
+			"enable":     req.Enable,
+		}).Error
+}
+
+func (userService *UserService) SetUserAuthorities(id uint, authorityIds []uint) error {
+	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
+		TxErr := tx.Delete(&[]system.SysUserAuthority{}, "sys_user_id = ?", id).Error
+		if TxErr != nil {
+			return TxErr
+		}
+		var useAuthority []system.SysUserAuthority
+		for _, v := range authorityIds {
+			useAuthority = append(useAuthority, system.SysUserAuthority{
+				SysUserId: id, SysAuthorityAuthorityId: v,
+			})
+		}
+		TxErr = tx.Create(&useAuthority).Error
+		if TxErr != nil {
+			return TxErr
+		}
+		TxErr = tx.Where("id = ?", id).First(&system.SysUser{}).Update("authority_id", authorityIds[0]).Error
+		if TxErr != nil {
+			return TxErr
+		}
+		return nil
+	})
+}
+
+func (userService *UserService) SetSelfInfo(req system.SysUser) error {
+	return global.GVA_DB.Model(&system.SysUser{}).
+		Where("id=?", req.ID).
+		Updates(req).Error
+}
+
+func (userService *UserService) ResetPassword(id uint) error {
+	err := global.GVA_DB.Model(&system.SysUser{}).Where("id = ?", id).Update("password", utils.BcryptHash("123456")).Error
+	return err
+}
+
+func (userService *UserService) GetUserInfoList(info request.PageInfo) (list interface{}, total int64, err error) {
+	limit := info.PageSize
+	offset := info.PageSize * (info.Page - 1)
+	db := global.GVA_DB.Model(&system.SysUser{})
+	var userList []system.SysUser
+	err = db.Count(&total).Error
+	if err != nil {
+		return
+	}
+	err = db.Limit(limit).Offset(offset).Preload("Authorities").Preload("Authority").Find(&userList).Error
+	return userList, total, err
+}
+
+func (userService *UserService) GetUserInfo(uuid uuid.UUID) (user system.SysUser, err error) {
+	var reqUser system.SysUser
+	err = global.GVA_DB.Preload("Authorities").Preload("Authority").First(&reqUser, "uuid = ?", uuid).Error
+	if err != nil {
+		return reqUser, err
+	}
+	// MenuServiceApp.UserAuthorityDefaultRouter(&reqUser)
+	return reqUser, err
 }

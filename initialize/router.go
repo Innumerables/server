@@ -32,6 +32,7 @@ func Routers() *gin.Engine {
 	{
 		systemRouter.InitApiRouter(PrivateGroup)    //注册功能api路由
 		systemRouter.InitCasbinRouter(PrivateGroup) //权限相关的路由
+		systemRouter.InitUserRouter(PrivateGroup)   //用户相关的路由
 
 	}
 	return Router
