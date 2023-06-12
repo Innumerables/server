@@ -32,6 +32,9 @@ func RegisterTables() {
 	err := db.AutoMigrate(
 		// 系统模块表
 		system.SysUser{},
+		system.SysApi{},
+		system.SysBaseMenu{},
+		system.SysAuthority{},
 	)
 	if err != nil {
 		global.GVA_LOG.Error("register table failed", zap.Error(err))
