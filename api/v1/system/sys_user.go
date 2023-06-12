@@ -62,6 +62,7 @@ func (b *BaseApi) TokenNext(c *gin.Context, user system.SysUser) {
 
 }
 
+// 注册用户
 func (b *BaseApi) Register(c *gin.Context) {
 	var r systemReq.Register
 	err := c.ShouldBindJSON(&r)
@@ -85,6 +86,7 @@ func (b *BaseApi) Register(c *gin.Context) {
 	response.OkWithDetailed(systemRes.SysUserResponse{User: usesrReturn}, "注册成功", c)
 }
 
+// 更改密码
 func (b *BaseApi) ChangePasword(c *gin.Context) {
 	var cgp systemReq.ChangePasword
 	err := c.ShouldBindJSON(&cgp)
@@ -103,6 +105,7 @@ func (b *BaseApi) ChangePasword(c *gin.Context) {
 	response.OkWithMessage("修改成功", c)
 }
 
+// 设置用户角色
 func (b *BaseApi) SetUserAuthotity(c *gin.Context) {
 	var sua systemReq.SetUserAuth
 	err := c.ShouldBindJSON(&sua)
@@ -130,6 +133,7 @@ func (b *BaseApi) SetUserAuthotity(c *gin.Context) {
 	}
 }
 
+// 删除用户
 func (b *BaseApi) DeleteUser(c *gin.Context) {
 	var reqId request.GetById
 	err := c.ShouldBindJSON(&reqId)
@@ -151,6 +155,7 @@ func (b *BaseApi) DeleteUser(c *gin.Context) {
 	response.OkWithMessage("删除成功", c)
 }
 
+// 设置用户信息
 func (b *BaseApi) SetuserInfo(c *gin.Context) {
 	var user systemReq.ChangeUserInfo
 	err := c.ShouldBindJSON(&user)
@@ -185,6 +190,7 @@ func (b *BaseApi) SetuserInfo(c *gin.Context) {
 	response.OkWithMessage("设置成功", c)
 }
 
+// 设置自身信息
 func (b *BaseApi) SetSelfInfo(c *gin.Context) {
 	var user systemReq.ChangeUserInfo
 	err := c.ShouldBindJSON(&user)
@@ -212,6 +218,7 @@ func (b *BaseApi) SetSelfInfo(c *gin.Context) {
 	response.OkWithMessage("设置成功", c)
 }
 
+// 设置用户权限组
 func (b *BaseApi) SetUserAuthorities(c *gin.Context) {
 	var sua systemReq.SetUserAuthorities
 	err := c.ShouldBindJSON(&sua)
@@ -228,6 +235,7 @@ func (b *BaseApi) SetUserAuthorities(c *gin.Context) {
 	response.OkWithMessage("修改成功", c)
 }
 
+// 重置用户密码
 func (b *BaseApi) ResetPassword(c *gin.Context) {
 	var user system.SysUser
 	err := c.ShouldBindJSON(&user)
@@ -244,6 +252,7 @@ func (b *BaseApi) ResetPassword(c *gin.Context) {
 	response.OkWithMessage("重置成功", c)
 }
 
+// 获得用户信息按页来获取
 func (b *BaseApi) GetUserList(c *gin.Context) {
 	var pageInfo request.PageInfo
 	err := c.ShouldBindJSON(&pageInfo)
@@ -265,6 +274,7 @@ func (b *BaseApi) GetUserList(c *gin.Context) {
 	}, "获取成功", c)
 }
 
+// 获取用户详细信息
 func (b *BaseApi) GetUserInfo(c *gin.Context) {
 	uuid := utils.GetUserUuid(c)
 	ReqUser, err := userService.GetUserInfo(uuid)

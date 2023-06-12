@@ -12,6 +12,7 @@ import (
 
 type ApiService struct{}
 
+// 创建api
 func (apiService *ApiService) CreateApi(api system.SysApi) error {
 	if !errors.Is(global.GVA_DB.Where("path = ? AND method = ?", api.Path, api.Method).First(&system.SysApi{}).Error, gorm.ErrRecordNotFound) {
 		return errors.New("存在相同的api")
@@ -19,6 +20,7 @@ func (apiService *ApiService) CreateApi(api system.SysApi) error {
 	return global.GVA_DB.Create(&api).Error
 }
 
+// 删除api
 func (apiService *ApiService) DeleteApi(api system.SysApi) (err error) {
 	var entity system.SysApi
 	fmt.Println(api.ID)
@@ -48,6 +50,7 @@ func (apiService *ApiService) GetApiById(id int) (api system.SysApi, err error) 
 	return
 }
 
+// 更新对应api信息
 func (apiService *ApiService) UpdateApi(api system.SysApi) (err error) {
 	var oldA system.SysApi
 	err = global.GVA_DB.Where("id = ?", api.ID).First(&oldA).Error
@@ -64,6 +67,7 @@ func (apiService *ApiService) UpdateApi(api system.SysApi) (err error) {
 	return err
 }
 
+// 删除对应api
 func (apiService *ApiService) DeleteApisByIds(ids request.IdsReq) (err error) {
 	var apis []system.SysApi
 	err = global.GVA_DB.Find(&apis, "id in ?", ids.Ids).Delete(&apis).Error
@@ -86,11 +90,13 @@ func (apiService *ApiService) DeleteApisByIds(ids request.IdsReq) (err error) {
 	return
 }
 
+// 获得所有api
 func (apiService *ApiService) GetAllApis() (apis []system.SysApi, err error) {
 	err = global.GVA_DB.Find(&apis).Error
 	return
 }
 
+// 获取对应api
 func (apiService *ApiService) GetAPIInfoList(api system.SysApi, info request.PageInfo, order string, desc bool) (list interface{}, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)

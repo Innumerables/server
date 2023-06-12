@@ -2,7 +2,6 @@ package system
 
 import (
 	"errors"
-	"fmt"
 	"server/global"
 	"server/model/system/request"
 	"strconv"
@@ -68,16 +67,17 @@ func (casbinService *CasbinService) Casbin() *casbin.CachedEnforcer {
 	return cachedEnforcer
 }
 
+// 更新权限信息，从前端得到的权限信息添加到数据库中
 func (cas *CasbinService) UpdateCasbin(AuthorityID uint, casbinInfos []request.CasbinInfo) error {
 	authorityId := strconv.Itoa(int(AuthorityID))
 	// cas.ClearCasbin(0, authorityId)
-	fmt.Println(authorityId, casbinInfos)
+	// fmt.Println(authorityId, casbinInfos)
 	rules := [][]string{}
 	for _, v := range casbinInfos {
 		rules = append(rules, []string{authorityId, v.Path, v.Method})
 	}
 	e := cas.Casbin()
-	fmt.Println(rules)
+	// fmt.Println(rules)
 	success, _ := e.AddPolicies(rules)
 	if !success {
 		return errors.New("存在相同api,添加失败,请联系管理员")

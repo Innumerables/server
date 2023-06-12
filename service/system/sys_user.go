@@ -17,6 +17,7 @@ import (
 type UserService struct {
 }
 
+// 用户登录
 func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysUser, err error) {
 	if nil == global.GVA_DB {
 		return nil, fmt.Errorf("db not init")
@@ -34,6 +35,7 @@ func (userService *UserService) Login(u *system.SysUser) (userInter *system.SysU
 	return &user, err
 }
 
+// 注册用户
 func (userService *UserService) Register(u system.SysUser) (userInter system.SysUser, err error) {
 	var user system.SysUser
 	if !errors.Is(global.GVA_DB.Where("username = ?", u.Username).First(&user).Error, gorm.ErrRecordNotFound) {
@@ -45,6 +47,7 @@ func (userService *UserService) Register(u system.SysUser) (userInter system.Sys
 	return u, err
 }
 
+// 改变用户密码
 func (userService *UserService) ChangePasword(u *system.SysUser, newPassword string) (err error) {
 	var user system.SysUser
 	err = global.GVA_DB.Where("id = ?", u.ID).First(&user).Error
@@ -60,6 +63,7 @@ func (userService *UserService) ChangePasword(u *system.SysUser, newPassword str
 	return err
 }
 
+// 也是设置用户权限，有所缺陷，应该被舍去了
 func (userService *UserService) SetUserAuthotity(id uint, authorithId uint) (err error) {
 	assingErr := global.GVA_DB.Where("sys_user_id = ? AND sys_autority_authority_id = ?", id, authorithId).First(&system.SysAuthority{}).Error
 	if errors.Is(assingErr, gorm.ErrRecordNotFound) {
@@ -69,6 +73,7 @@ func (userService *UserService) SetUserAuthotity(id uint, authorithId uint) (err
 	return err
 }
 
+// 删除用户
 func (userService *UserService) DeleteUser(id int) (err error) {
 	var user system.SysUser
 	err = global.GVA_DB.Where("id = ?", id).Delete(&user).Error
@@ -79,6 +84,7 @@ func (userService *UserService) DeleteUser(id int) (err error) {
 	return err
 }
 
+// 设置用户信息
 func (userService *UserService) SetUserInfo(req system.SysUser) error {
 	return global.GVA_DB.Model(&system.SysUser{}).
 		Select("updated_at", "nick_name", "header_img", "phone", "email", "sideMode", "enable").
@@ -94,6 +100,7 @@ func (userService *UserService) SetUserInfo(req system.SysUser) error {
 		}).Error
 }
 
+// 在设置用户权限时，会从数据库中删除所有相关的权限,通过前端获得的权限id再更新到数据库中
 func (userService *UserService) SetUserAuthorities(id uint, authorityIds []uint) error {
 	return global.GVA_DB.Transaction(func(tx *gorm.DB) error {
 		TxErr := tx.Delete(&[]system.SysUserAuthority{}, "sys_user_id = ?", id).Error
@@ -118,17 +125,20 @@ func (userService *UserService) SetUserAuthorities(id uint, authorityIds []uint)
 	})
 }
 
+// 更新用户信息
 func (userService *UserService) SetSelfInfo(req system.SysUser) error {
 	return global.GVA_DB.Model(&system.SysUser{}).
 		Where("id=?", req.ID).
 		Updates(req).Error
 }
 
+// 重置密码
 func (userService *UserService) ResetPassword(id uint) error {
 	err := global.GVA_DB.Model(&system.SysUser{}).Where("id = ?", id).Update("password", utils.BcryptHash("123456")).Error
 	return err
 }
 
+// 根据设定的页数和取数据数获取对应的用户信息
 func (userService *UserService) GetUserInfoList(info request.PageInfo) (list interface{}, total int64, err error) {
 	limit := info.PageSize
 	offset := info.PageSize * (info.Page - 1)
@@ -142,6 +152,7 @@ func (userService *UserService) GetUserInfoList(info request.PageInfo) (list int
 	return userList, total, err
 }
 
+// 根据id获得对应用户信息
 func (userService *UserService) GetUserInfo(uuid uuid.UUID) (user system.SysUser, err error) {
 	var reqUser system.SysUser
 	err = global.GVA_DB.Preload("Authorities").Preload("Authority").First(&reqUser, "uuid = ?", uuid).Error

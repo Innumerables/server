@@ -98,6 +98,7 @@ func (s *SystemApiApi) DeleteApisByIds(c *gin.Context) {
 	response.OkWithMessage("删除成功", c)
 }
 
+// 获取所有api信息
 func (s *SystemApiApi) GetAllApis(c *gin.Context) {
 	apis, err := apiService.GetAllApis()
 	if err != nil {
@@ -108,6 +109,7 @@ func (s *SystemApiApi) GetAllApis(c *gin.Context) {
 	response.OkWithDetailed(systemRes.SysAPIListResponse{Apis: apis}, "获取成功", c)
 }
 
+// 根据对用页码获取相应api数据
 func (s *SystemApiApi) GetApiList(c *gin.Context) {
 	var pageInfo systemReq.SearchApiParams
 	err := c.ShouldBindJSON(&pageInfo)

@@ -11,6 +11,7 @@ import (
 
 type CasbinApi struct{}
 
+// 更新权限信息
 func (cas *CasbinApi) UpdateCasbin(c *gin.Context) {
 	var cmr request.CasbinInReceive
 	err := c.ShouldBindJSON(&cmr)
