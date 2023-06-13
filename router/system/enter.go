@@ -6,4 +6,5 @@ type RouterGroup struct {
 	ApiRouter
 	CasbinRouter
 	UserRouter
+	AuthorityRouter
 }
