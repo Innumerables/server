@@ -11,10 +11,12 @@ import (
 
 var ErrRoleExistence = errors.New("存在相同角色id")
 
-type AuthroityService struct{}
+type AuthorityService struct{}
+
+var AuthorityServiceApp = new(AuthorityService)
 
 // 创建角色
-func (a *AuthroityService) CreateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
+func (a *AuthorityService) CreateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
 	var authroityBox system.SysAuthority
 	if !errors.Is(global.GVA_DB.Where("authority_id = ?", auth.AuthorityId).First(&authroityBox).Error, gorm.ErrRecordNotFound) {
 		return auth, ErrRoleExistence
@@ -24,7 +26,7 @@ func (a *AuthroityService) CreateAuthority(auth system.SysAuthority) (authority 
 }
 
 // 删除角色
-func (a *AuthroityService) DeleteAuthority(auth system.SysAuthority) (err error) {
+func (a *AuthorityService) DeleteAuthority(auth system.SysAuthority) (err error) {
 	if errors.Is(global.GVA_DB.Debug().Preload("Users").First(&auth).Error, gorm.ErrRecordNotFound) {
 		return errors.New("该角色不存在")
 	}
@@ -72,14 +74,21 @@ func (a *AuthroityService) DeleteAuthority(auth system.SysAuthority) (err error)
 // 	menus,err := MenuServiceApp
 // }
 
-func (a *AuthroityService) UpdateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
+func (a *AuthorityService) UpdateAuthority(auth system.SysAuthority) (authority system.SysAuthority, err error) {
 	err = global.GVA_DB.Where("authroity_id = ?", auth.AuthorityId).First(&system.SysAuthority{}).Updates(&auth).Error
 	return auth, err
 }
 
-func (a *AuthroityService) SetDataAuthority(auth system.SysAuthority) error {
+func (a *AuthorityService) SetDataAuthority(auth system.SysAuthority) error {
 	var s system.SysAuthority
 	global.GVA_DB.Preload("DataAuthorityId").First(&s, "authroity_id = ?", auth.AuthorityId)
 	err := global.GVA_DB.Model(&s).Association("DataAuthorityId").Replace(&auth.DataAuthorityId)
+	return err
+}
+
+func (a *AuthorityService) SetMenuAuthority(auth *system.SysAuthority) error {
+	var s system.SysAuthority
+	global.GVA_DB.Preload("SysBaseMenus").First(&s, "authority_id = ?", auth.AuthorityId)
+	err := global.GVA_DB.Model(&s).Association("SysBaseMenus").Replace(&auth.SysBaseMenus)
 	return err
 }

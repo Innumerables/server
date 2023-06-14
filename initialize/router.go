@@ -34,6 +34,7 @@ func Routers() *gin.Engine {
 		systemRouter.InitCasbinRouter(PrivateGroup)    //权限相关的路由
 		systemRouter.InitUserRouter(PrivateGroup)      //用户相关的路由
 		systemRouter.InitAuthorityRouter(PrivateGroup) //注册角色路由
+		systemRouter.InitMenuRouter(PrivateGroup)
 
 	}
 	return Router
