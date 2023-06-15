@@ -2,6 +2,7 @@ package system
 
 import (
 	"server/global"
+	"server/model/common/request"
 	"server/model/common/response"
 	"server/model/system"
 	systemRes "server/model/system/response"
@@ -93,4 +94,25 @@ func (a *AuthorityApi) SetDataAuthority(c *gin.Context) {
 		return
 	}
 	response.OkWithMessage("设置成功", c)
+}
+
+func (a *AuthorityApi) GetAuthorityList(c *gin.Context) {
+	var pageInfo request.PageInfo
+	err := c.ShouldBindJSON(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	list, total, err := authorityService.GetAuthorityList(pageInfo)
+	if err != nil {
+		global.GVA_LOG.Error("获取失败", zap.Error(err))
+		response.FailWithMessage("获取失败"+err.Error(), c)
+		return
+	}
+	response.OkWithDetailed(response.PageResult{
+		List:     list,
+		Total:    total,
+		Page:     pageInfo.Page,
+		PageSize: pageInfo.PageSize,
+	}, "获取成功", c)
 }

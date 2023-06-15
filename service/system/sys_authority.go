@@ -3,6 +3,7 @@ package system
 import (
 	"errors"
 	"server/global"
+	"server/model/common/request"
 	"server/model/system"
 	"strconv"
 
@@ -90,5 +91,30 @@ func (a *AuthorityService) SetMenuAuthority(auth *system.SysAuthority) error {
 	var s system.SysAuthority
 	global.GVA_DB.Preload("SysBaseMenus").First(&s, "authority_id = ?", auth.AuthorityId)
 	err := global.GVA_DB.Model(&s).Association("SysBaseMenus").Replace(&auth.SysBaseMenus)
+	return err
+}
+
+func (a *AuthorityService) GetAuthorityList(info request.PageInfo) (list interface{}, total int64, err error) {
+	limit := info.PageSize
+	offset := info.PageSize * (info.Page - 1)
+	db := global.GVA_DB.Model(&system.SysAuthority{})
+	if err = db.Where("parent_id=?", "0").Count(&total).Error; total == 0 || err != nil {
+		return
+	}
+	var authority []system.SysAuthority
+	err = db.Limit(limit).Offset(offset).Preload("DataAuthorityId").Where("paren_id=?", "0").Find(&authority).Error
+	for k := range authority {
+		err = a.findChildrenAuthority(&authority[k])
+	}
+	return authority, total, err
+}
+
+func (a *AuthorityService) findChildrenAuthority(authority *system.SysAuthority) (err error) {
+	err = global.GVA_DB.Preload("DataAuthorityId").Where("parent_id=?", authority.AuthorityId).Find(&authority.Children).Error
+	if len(authority.Children) > 0 {
+		for k := range authority.Children {
+			err = a.findChildrenAuthority(&authority.Children[k])
+		}
+	}
 	return err
 }
