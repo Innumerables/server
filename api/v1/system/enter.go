@@ -9,6 +9,7 @@ type ApiGroup struct {
 	CasbinApi
 	AuthorityApi
 	AuthorityMenuApi
+	DictionaryApi
 }
 
 var (

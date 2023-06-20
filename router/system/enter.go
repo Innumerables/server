@@ -8,4 +8,5 @@ type RouterGroup struct {
 	UserRouter
 	AuthorityRouter
 	MenuRouter
+	DictionaryRouter
 }

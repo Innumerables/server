@@ -67,25 +67,25 @@ func (apiService *ApiService) UpdateApi(api system.SysApi) (err error) {
 	return err
 }
 
-// 删除对应api
+// 删除对应api,多个删除
 func (apiService *ApiService) DeleteApisByIds(ids request.IdsReq) (err error) {
 	var apis []system.SysApi
 	err = global.GVA_DB.Find(&apis, "id in ?", ids.Ids).Delete(&apis).Error
 	if err != nil {
 		return err
-	} // else {
-	// 	for _, sysApi := range apis {
-	// 		success := CasbinServiceApp.ClearCasbin(1, sysApi.Path, sysApi.Method)
-	// 		if !success {
-	// 			return errors.New(sysApi.Path + ":" + sysApi.Method + "casbin同步清理失败")
-	// 		}
-	// 	}
-	// 	e := CasbinServiceApp.Casbin()
-	// 	err = e.InvalidateCache()
-	// 	if err != nil {
-	// 		return err
-	// 	}
-	// }
+	} else { //
+		for _, sysApi := range apis {
+			success := CasbinServiceApp.ClearCasbin(1, sysApi.Path, sysApi.Method)
+			if !success {
+				return errors.New(sysApi.Path + ":" + sysApi.Method + "casbin同步清理失败")
+			}
+		}
+		e := CasbinServiceApp.Casbin()
+		err = e.InvalidateCache()
+		if err != nil {
+			return err
+		}
+	}
 
 	return
 }
