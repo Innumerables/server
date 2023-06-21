@@ -8,4 +8,5 @@ type ServiceGroup struct {
 	AuthorityService
 	MenuService
 	BaseMenuService
+	DictionaryService
 }

@@ -13,11 +13,12 @@ type ApiGroup struct {
 }
 
 var (
-	userService      = service.ServiceGroupApp.SystemServiceGroup.UserService
-	initDBService    = service.ServiceGroupApp.SystemServiceGroup.InitDBService
-	apiService       = service.ServiceGroupApp.SystemServiceGroup.ApiService
-	casbinService    = service.ServiceGroupApp.SystemServiceGroup.CasbinService
-	authorityService = service.ServiceGroupApp.SystemServiceGroup.AuthorityService
-	menuService      = service.ServiceGroupApp.SystemServiceGroup.MenuService
-	baseMenuService  = service.ServiceGroupApp.SystemServiceGroup.BaseMenuService
+	userService       = service.ServiceGroupApp.SystemServiceGroup.UserService
+	initDBService     = service.ServiceGroupApp.SystemServiceGroup.InitDBService
+	apiService        = service.ServiceGroupApp.SystemServiceGroup.ApiService
+	casbinService     = service.ServiceGroupApp.SystemServiceGroup.CasbinService
+	authorityService  = service.ServiceGroupApp.SystemServiceGroup.AuthorityService
+	menuService       = service.ServiceGroupApp.SystemServiceGroup.MenuService
+	baseMenuService   = service.ServiceGroupApp.SystemServiceGroup.BaseMenuService
+	dictionaryService = service.ServiceGroupApp.SystemServiceGroup.DictionaryService
 )
