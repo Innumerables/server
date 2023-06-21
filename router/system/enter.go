@@ -9,4 +9,5 @@ type RouterGroup struct {
 	AuthorityRouter
 	MenuRouter
 	DictionaryRouter
+	DictionaryDetailApiRouter
 }

@@ -9,4 +9,5 @@ type ServiceGroup struct {
 	MenuService
 	BaseMenuService
 	DictionaryService
+	DictionaryDetailService
 }
