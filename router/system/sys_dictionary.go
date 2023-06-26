@@ -2,6 +2,7 @@ package system
 
 import (
 	v1 "server/api/v1"
+	"server/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,7 +10,7 @@ import (
 type DictionaryRouter struct{}
 
 func (s *DictionaryRouter) InitSysDictionaryRouter(Router *gin.RouterGroup) {
-	sysDictionaryRouter := Router.Group("sysDictionary")
+	sysDictionaryRouter := Router.Group("sysDictionary").Use(middleware.OperationRecord())
 	sysDictionaryRouterWithoutRecord := Router.Group("sysDictionary")
 	sysDictionaryApi := v1.ApiGroupApp.SystemApiGroup.DictionaryApi
 	{

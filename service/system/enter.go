@@ -10,4 +10,5 @@ type ServiceGroup struct {
 	BaseMenuService
 	DictionaryService
 	DictionaryDetailService
+	OperationRecordService
 }

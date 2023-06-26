@@ -2,6 +2,7 @@ package system
 
 import (
 	v1 "server/api/v1"
+	"server/middleware"
 
 	"github.com/gin-gonic/gin"
 )
@@ -9,7 +10,7 @@ import (
 type ApiRouter struct{}
 
 func (s *ApiRouter) InitApiRouter(Router *gin.RouterGroup) {
-	apiRouter := Router.Group("api")
+	apiRouter := Router.Group("api").Use(middleware.OperationRecord())
 	apiRouterWithoutRecord := Router.Group("api")
 	apiRouterApi := v1.ApiGroupApp.SystemApiGroup.SystemApiApi
 	{

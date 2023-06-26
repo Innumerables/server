@@ -80,7 +80,7 @@ func (cas *CasbinService) UpdateCasbin(AuthorityID uint, casbinInfos []request.C
 	// fmt.Println(rules)
 	success, _ := e.AddPolicies(rules)
 	if !success {
-		return errors.New("存在相同api,添加失败,请联系管理员")
+		return errors.New("存在相同规则,添加失败,请联系管理员")
 	}
 	err := e.InvalidateCache()
 	if err != nil {
