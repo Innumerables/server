@@ -14,7 +14,7 @@ func Routers() *gin.Engine {
 	Router := gin.Default()
 
 	systemRouter := router.RouterGroupApp.System
-
+	exampleRouter := router.RouterGroupApp.Example
 	// Router.StaticFS(global.GVA_CONFIG.Local.StorePath, http.Dir(global.GVA_CONFIG.Local.StorePath)) // 为用户头像和文件提供静态地址
 	PublicGroup := Router.Group(global.GVA_CONFIG.System.RouterPrefix)
 	{
@@ -39,6 +39,7 @@ func Routers() *gin.Engine {
 		systemRouter.InitSysDictionaryDetailRouter(PrivateGroup) //字典详情管理
 		systemRouter.InitSysOperationRecordRouter(PrivateGroup)  //操作记录管理
 
+		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup)
 	}
 	return Router
 }
