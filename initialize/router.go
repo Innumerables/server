@@ -39,7 +39,8 @@ func Routers() *gin.Engine {
 		systemRouter.InitSysDictionaryDetailRouter(PrivateGroup) //字典详情管理
 		systemRouter.InitSysOperationRecordRouter(PrivateGroup)  //操作记录管理
 
-		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup)
+		exampleRouter.InitFileUploadAndDownloadRouter(PrivateGroup) //文件上传，断点续传功能实现
+		exampleRouter.InitCustomerRouter(PrivateGroup)
 	}
 	return Router
 }

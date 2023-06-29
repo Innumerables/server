@@ -9,6 +9,8 @@ import (
 	"strings"
 
 	"server/utils/upload"
+
+	"gorm.io/gorm"
 )
 
 type FileUploadAndDownloadService struct{}
@@ -79,4 +81,44 @@ func (e *FileUploadAndDownloadService) EditFileName(file example.ExaFileUploadAn
 	var fileFromDb example.ExaFileUploadAndDownload
 	err = global.GVA_DB.Where("id = ?", file.ID).First(&fileFromDb).Update("name", file.Name).Error
 	return
+}
+
+func (e *FileUploadAndDownloadService) FindOrCreateFile(fileMd5 string, fileName string, chunkTotal int) (file example.ExaFile, err error) {
+	var cfile example.ExaFile
+	cfile.FileMd5 = fileMd5
+	cfile.FileName = fileName
+	cfile.ChunkTotal = chunkTotal
+
+	if errors.Is(global.GVA_DB.Where("file_md5 = ? AND is_finish = ?", fileMd5, true).First(&file).Error, gorm.ErrRecordNotFound) {
+		err = global.GVA_DB.Where("file_md5 = ? AND file_name = ?", fileMd5, fileName).Preload("ExaFileChunk").FirstOrCreate(&file, cfile).Error
+		return file, err
+	}
+	cfile.IsFinish = true
+	cfile.FilePath = file.FilePath
+	err = global.GVA_DB.Create(&cfile).Error
+	return cfile, err
+}
+
+func (e *FileUploadAndDownloadService) CreateFileChunk(id uint, fileChunkPath string, fileChunkNumber int) error {
+	var chunk example.ExaFileChunk
+	chunk.FileChunkPath = fileChunkPath
+	chunk.ExaFileID = id
+	chunk.FileChunkNumber = fileChunkNumber
+	err := global.GVA_DB.Create(&chunk).Error
+	return err
+}
+
+func (e *FileUploadAndDownloadService) RemoveChunk(fileMd5 string, filePath string) error {
+	var chunks []example.ExaFileChunk
+	var file example.ExaFile
+	err := global.GVA_DB.Where("file_md5 = ?", fileMd5).First(&file).
+		Updates(map[string]interface{}{
+			"IsFinish":  true,
+			"file_path": filePath,
+		}).Error
+	if err != nil {
+		return err
+	}
+	err = global.GVA_DB.Where("exa_file_id = ?", file.ID).Delete(&chunks).Unscoped().Error
+	return err
 }

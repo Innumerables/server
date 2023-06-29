@@ -118,3 +118,8 @@ func (a *AuthorityService) findChildrenAuthority(authority *system.SysAuthority)
 	}
 	return err
 }
+
+func (authorityService *AuthorityService) GetAuthorityInfo(auth system.SysAuthority) (sa system.SysAuthority, err error) {
+	err = global.GVA_DB.Preload("DataAuthorityId").Where("authority_id = ?", auth.AuthorityId).First(&sa).Error
+	return sa, err
+}
