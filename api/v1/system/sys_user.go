@@ -8,34 +8,86 @@ import (
 	systemReq "server/model/system/request"
 	systemRes "server/model/system/response"
 	"strconv"
+	"time"
 
 	"server/utils"
 
 	"github.com/gin-gonic/gin"
+	"github.com/mojocn/base64Captcha"
 	"go.uber.org/zap"
 )
 
 // var store = base64Captcha.DefaultMemStore
+var store = base64Captcha.DefaultMemStore
 
 type BaseApi struct{}
+
+func (b *BaseApi) Captcha(c *gin.Context) {
+	openCaptha := global.GVA_CONFIG.Captcha.OpenCaptcha
+	openCaptchaTimeOut := global.GVA_CONFIG.Captcha.OpenCaptchaTimeOut
+	key := c.ClientIP()
+	v, ok := global.BlackCache.Get(key)
+	if !ok {
+		global.BlackCache.Set(key, 1, time.Second*time.Duration(openCaptchaTimeOut))
+	}
+	var oc bool
+	if openCaptha == 0 || openCaptha < interfaceToInt(v) {
+		oc = true
+	}
+
+	driver := base64Captcha.NewDriverDigit(global.GVA_CONFIG.Captcha.ImgHeight, global.GVA_CONFIG.Captcha.ImgWidth, global.GVA_CONFIG.Captcha.KeyLong, 0.7, 80)
+	cp := base64Captcha.NewCaptcha(driver, store)
+	id, b64s, err := cp.Generate()
+	if err != nil {
+		global.GVA_LOG.Error("验证码获取失败", zap.Error(err))
+		response.FailWithMessage("验证码获取失败", c)
+		return
+	}
+	response.OkWithDetailed(systemRes.SysCaptchaResponse{
+		CaptchaId:     id,
+		PicPath:       b64s,
+		CaptchaLength: global.GVA_CONFIG.Captcha.KeyLong,
+		OpenCaptcha:   oc,
+	}, "验证码获取成功", c)
+}
 
 func (b *BaseApi) Login(c *gin.Context) {
 	var l systemReq.Login
 	err := c.ShouldBindJSON(&l)
+	key := c.ClientIP()
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 	}
-	u := &system.SysUser{Username: l.Username, Password: l.Password}
-	user, err := userService.Login(u)
-	if err != nil {
-		global.GVA_LOG.Error("登陆失败! 用户名不存在或者密码错误!", zap.Error(err))
-		response.FailWithMessage("用户名不存在或者密码错误", c)
+	openCaptcha := global.GVA_CONFIG.Captcha.OpenCaptcha
+	openCaptchaTimeOut := global.GVA_CONFIG.Captcha.OpenCaptchaTimeOut
+	v, ok := global.BlackCache.Get(key)
+	if !ok {
+		global.BlackCache.Set(key, 1, time.Second*time.Duration(openCaptchaTimeOut))
+	}
+	var oc bool = openCaptcha == 0 || openCaptcha < interfaceToInt(v)
+	if !oc || store.Verify(l.CaptchaId, l.Captcha, true) {
+		u := &system.SysUser{Username: l.Username, Password: l.Password}
+		user, err := userService.Login(u)
+		if err != nil {
+			global.GVA_LOG.Error("登陆失败! 用户名不存在或者密码错误!", zap.Error(err))
+			response.FailWithMessage("用户名不存在或者密码错误", c)
+			return
+		}
+		if user.Enable != 1 {
+			global.GVA_LOG.Error("登陆失败! 用户被禁止登录!")
+			// 验证码次数+1
+			global.BlackCache.Increment(key, 1)
+			response.FailWithMessage("用户被禁止登录", c)
+			return
+		}
+		b.TokenNext(c, *user)
 		return
 	}
-	b.TokenNext(c, *user)
-	return
+	global.BlackCache.Increment(key, 1)
+	response.FailWithMessage("验证码错误", c)
 }
 
+// 登录后签发jwt
 func (b *BaseApi) TokenNext(c *gin.Context, user system.SysUser) {
 	j := &utils.JWT{SigningKey: []byte(global.GVA_CONFIG.JWT.SigningKey)}
 	claims := j.CreateClaims(systemReq.BaseClaims{
@@ -284,4 +336,14 @@ func (b *BaseApi) GetUserInfo(c *gin.Context) {
 		return
 	}
 	response.OkWithDetailed(gin.H{"userInfo": ReqUser}, "获取成功", c)
+}
+
+func interfaceToInt(v interface{}) (i int) {
+	switch v := v.(type) {
+	case int:
+		i = v
+	default:
+		i = 0
+	}
+	return
 }

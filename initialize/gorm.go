@@ -6,6 +6,8 @@ import (
 
 	"server/model/system"
 
+	"server/model/example"
+
 	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
@@ -31,10 +33,20 @@ func RegisterTables() {
 	db := global.GVA_DB
 	err := db.AutoMigrate(
 		// 系统模块表
-		system.SysUser{},
 		system.SysApi{},
+		system.SysUser{},
 		system.SysBaseMenu{},
 		system.SysAuthority{},
+		system.SysDictionary{},
+		system.SysDictionaryDetail{},
+		system.SysBaseMenuParameter{},
+		system.SysBaseMenuBtn{},
+		system.SysAuthorityBtn{},
+
+		example.ExaFile{},
+		example.Customer{},
+		example.ExaFileChunk{},
+		example.ExaFileUploadAndDownload{},
 	)
 	if err != nil {
 		global.GVA_LOG.Error("register table failed", zap.Error(err))

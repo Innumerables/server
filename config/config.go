@@ -7,4 +7,5 @@ type Server struct {
 	JWT      JWT      `mapstructure:"jwt" json:"jwt" yaml:"jwt"`
 	AutoCode Autocode `mapstructure:"autocode" json:"autocode" yaml:"autocode"`
 	Local    Local    `mapstructure:"local" json:"local" yaml:"local"`
+	Captcha  Captcha  `mapstructure:"captcha" json:"captcha" yaml:"captcha"`
 }

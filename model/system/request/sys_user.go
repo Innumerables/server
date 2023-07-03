@@ -3,8 +3,10 @@ package request
 import "server/model/system"
 
 type Login struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
+	Username  string `json:"username"`
+	Password  string `json:"password"`
+	Captcha   string `json:"captcha"`   // 验证码
+	CaptchaId string `json:"captchaId"` // 验证码ID
 }
 
 // 注册用户时前端传出来的相应属性值，用来注册对象

@@ -11,10 +11,12 @@ require (
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/gookit/color v1.5.3
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible
+	github.com/mojocn/base64Captcha v1.3.5
 	github.com/satori/go.uuid v1.2.0
+	github.com/songzhibin97/gkit v1.2.11
 	github.com/spf13/viper v1.15.0
 	go.uber.org/zap v1.24.0
-	golang.org/x/crypto v0.5.0
+	golang.org/x/crypto v0.6.0
 	golang.org/x/sync v0.1.0
 	gorm.io/driver/mysql v1.5.0
 	gorm.io/gorm v1.25.0
@@ -35,6 +37,7 @@ require (
 	github.com/goccy/go-json v0.10.0 // indirect
 	github.com/golang-sql/civil v0.0.0-20220223132316-b832511892a9 // indirect
 	github.com/golang-sql/sqlexp v0.1.0 // indirect
+	github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
@@ -72,6 +75,7 @@ require (
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/arch v0.0.0-20210923205945-b76863e36670 // indirect
+	golang.org/x/image v0.0.0-20190802002840-cff245a6509b // indirect
 	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sys v0.6.0 // indirect
 	golang.org/x/text v0.7.0 // indirect
