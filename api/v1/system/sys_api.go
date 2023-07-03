@@ -7,6 +7,7 @@ import (
 	"server/model/system"
 	systemReq "server/model/system/request"
 	systemRes "server/model/system/response"
+	"server/utils"
 
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
@@ -18,6 +19,11 @@ type SystemApiApi struct{}
 func (s *SystemApiApi) CreateApi(c *gin.Context) {
 	var api system.SysApi
 	err := c.ShouldBind(&api)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(api, utils.ApiVerify) //增加属性检测是否合理
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -38,6 +44,11 @@ func (s *SystemApiApi) DeleteApi(c *gin.Context) {
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 	}
+	err = utils.Verify(api, utils.IdVerify) //增加属性检测是否合理
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
 	err = apiService.DeleteApi(api)
 	if err != nil {
 		global.GVA_LOG.Error("删除失败", zap.Error(err))
@@ -55,6 +66,11 @@ func (s *SystemApiApi) GetApiById(c *gin.Context) {
 		response.FailWithMessage(err.Error(), c)
 		return
 	}
+	err = utils.Verify(idInfo, utils.IdVerify)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
 	api, err := apiService.GetApiById(idInfo.ID)
 	if err != nil {
 		global.GVA_LOG.Error("获取失败", zap.Error(err))
@@ -68,6 +84,11 @@ func (s *SystemApiApi) GetApiById(c *gin.Context) {
 func (s *SystemApiApi) UpdateApi(c *gin.Context) {
 	var api system.SysApi
 	err := c.ShouldBindJSON(&api)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(api, utils.ApiVerify)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
@@ -113,6 +134,11 @@ func (s *SystemApiApi) GetAllApis(c *gin.Context) {
 func (s *SystemApiApi) GetApiList(c *gin.Context) {
 	var pageInfo systemReq.SearchApiParams
 	err := c.ShouldBindJSON(&pageInfo)
+	if err != nil {
+		response.FailWithMessage(err.Error(), c)
+		return
+	}
+	err = utils.Verify(pageInfo.PageInfo, utils.PageInfoVerify)
 	if err != nil {
 		response.FailWithMessage(err.Error(), c)
 		return
